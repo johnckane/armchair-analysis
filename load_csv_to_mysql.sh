@@ -17,7 +17,7 @@ set -x
 
 _db="armchair_analysis"
 _db_user="root"
-_db_password="cz14F4b12"
+_db_password = ""
 
 # define directory containing csv files
 _csv_directory="/home/john/armchair_analysis/nfl_00-16"
