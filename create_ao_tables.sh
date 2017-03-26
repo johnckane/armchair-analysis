@@ -15,7 +15,7 @@ _csv_directory='/home/john/armchair_analysis/nfl_00-16'
 # go into directory
 cd $_csv_directory
 
-mysql -u $_db_user -p$_db_password $_db <<eof
+mysql -u $_db_user -p$_db_password $_db <<EOF
 CREATE TABLE IF NOT EXISTS conv (
     pid int
 ,   type varchar(4)
@@ -24,11 +24,8 @@ CREATE TABLE IF NOT EXISTS conv (
 ,   trg varchar(7)
 ,   conv bool
 ,   primary key (pid) 
-,   foreign key (pid)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1
-
-
-CREATE TABLE IF NOT EXISTS td (
+);
+CREATE TABLE IF NOT EXISTS td(
     pid int
 ,   qtr int
 ,   min int
@@ -39,65 +36,49 @@ CREATE TABLE IF NOT EXISTS td (
 ,   player varchar(7)
 ,   type varchar(4)
 ,   primary key (pid)
-,   foreign key (pid)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1
- 
- CREATE TABLE IF NOT EXISTS koff (
+);
+CREATE TABLE IF NOT EXISTS koff(
     pid int
  ,  kicker varchar(7)
  ,  kgro int
  ,  knet int
  ,  ktb bool
  ,  kr varchar(7)
- ,  kry
+ ,  kry int
  ,  primary key (pid) 
- ,  foreign key (pid)
- ) ENGINE=MyISAM DEFAULT CHARSET=latin1
- 
-
-
-CREATE TABLE IF NOT EXISTS block (
+);
+CREATE TABLE IF NOT EXISTS block(
     pid int
 ,   blk varchar(7)
 ,   brcv varchar(7)
 ,   primary key (pid) 
-,   foreign key (pid)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1
-
-
-
-CREATE TABLE IF NOT EXISTS fgxp (
+);
+CREATE TABLE IF NOT EXISTS fgxp(
     pid int
 ,   fgxp varchar(2)
 ,   fkicker varchar(7)
 ,   dist int
 ,   good bool
 ,   primary key (pid)
-,   foreign key (pid)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1
- 
-CREATE TABLE IF NOT EXISTS fumble (
+); 
+CREATE TABLE IF NOT EXISTS fumble(
     pid int
 ,   fum varchar(7)
 ,   frcv varchar(7)
 ,   fry int
 ,   forc varchar(7)
 ,   primary key (pid)
-,   foreign key (pid)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1
-
-CREATE TABLE IF NOT EXISTS injury (
+);
+CREATE TABLE IF NOT EXISTS injury(
     gid int
 ,   player varchar(7)
 ,   team varchar(3)
 ,   details varchar(20)
 ,   pstat varchar(40)
 ,   gstat varchar(12)
-,   primary key (pid)
-,   foreign key (pid) 
-) ENGINE=MyISAM DEFAULT CHARSET=latin1
-
-CREATE TABLE IF NOT EXISTS pass (
+,   primary key (gid)
+);
+CREATE TABLE IF NOT EXISTS pass(
     pid int
 ,   psr varchar(7)
 ,   trg varchar(7)
@@ -108,30 +89,24 @@ CREATE TABLE IF NOT EXISTS pass (
 ,   spk bool
 ,   dfb varchar(7)
 ,   primary key (pid)
-,   foreign key (pid) 
-) ENGINE=MyISAM DEFAULT CHARSET=latin1
-
-CREATE TABLE IF NOT EXISTS penalty (
+);
+CREATE TABLE IF NOT EXISTS penalty(
     uid int
 ,   pid int
 ,   ptm varchar(3)
 ,   pen varchar(7)
-,   desc varchar(40)
+,   descr varchar(40)
 ,   cat int
 ,   pey int
 ,   act varchar(1)
 ,   primary key (uid)
-,   foreign key (pid)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1
-
-CREATE TABLE IF NOT EXISTS safety (
+);
+CREATE TABLE IF NOT EXISTS safety(
     pid int
 ,   saf varchar(7)
 ,   primary key (pid)
-,   foreign key (pid)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1
-
-CREATE TABLE IF NOT EXISTS kicker (
+);
+CREATE TABLE IF NOT EXISTS kicker(
     uid int
 ,   gid int
 ,   player varchar(7)
@@ -145,19 +120,15 @@ CREATE TABLE IF NOT EXISTS kicker (
 ,   year int
 ,   team varchar(3)
 ,   primary key (uid)
-,   foreign key (gid)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1
-
-CREATE TABLE IF NOT EXISTS tackle (
+);
+CREATE TABLE IF NOT EXISTS tackle(
     uid int
 ,   pid int
 ,   tck varchar(7)
 ,   value double
 ,   primary key (uid)
-,   foreign key (pid)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1
-
-CREATE TABLE IF NOT EXISTS sack (
+);
+CREATE TABLE IF NOT EXISTS sack(
     uid int
 ,   pid int
 ,   qb varchar(7)
@@ -165,10 +136,8 @@ CREATE TABLE IF NOT EXISTS sack (
 ,   value double
 ,   ydsl int
 ,   primary key (uid)
-,   foreign key (pid) 
-) ENGINE=MyISAM DEFAULT CHARSET=latin1
-
-CREATE TABLE IF NOT EXISTS snap (
+);
+CREATE TABLE IF NOT EXISTS snap(
     uid int
 ,   gid int
 ,   tname varchar(3)
@@ -176,19 +145,15 @@ CREATE TABLE IF NOT EXISTS snap (
 ,   pos varchar(4)
 ,   snp int
 ,   primary key (uid)
-,   foreign key (gid)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1
-
-CREATE TABLE IF NOT EXISTS intercpt (
+);
+CREATE TABLE IF NOT EXISTS intercpt(
     pid int
 ,   psr varchar(7)
 ,   ints varchar(7)
 ,   iry int
 ,   primary key (pid)
-,   foreign key (pid)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1
-
-CREATE TABLE IF NOT EXISTS punt (
+);
+CREATE TABLE IF NOT EXISTS punt(
     pid int
 ,   punter varchar(7)
 ,   pgro int
@@ -198,10 +163,8 @@ CREATE TABLE IF NOT EXISTS punt (
 ,   pry int
 ,   pfc bool
 ,   primary key (pid)
-,   foreign key (pid)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1
-
-CREATE TABLE IF NOT EXISTS rush (
+);
+CREATE TABLE IF NOT EXISTS rush(
     pid int
 ,   bc varchar(7)
 ,   dir varchar(2)
@@ -209,10 +172,8 @@ CREATE TABLE IF NOT EXISTS rush (
 ,   succ bool
 ,   kne bool
 ,   primary key (pid)
-,   foreign key (pid)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1
-
-CREATE TABLE IF NOT EXISTS redzone (
+);
+CREATE TABLE IF NOT EXISTS redzone(
     uid int
 ,   gid int
 ,   player varchar(7)
@@ -229,10 +190,8 @@ CREATE TABLE IF NOT EXISTS redzone (
 ,   fuml int
 ,   peny int
 ,   primary key (uid)
-,   foreign key(gid)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1
-
-CREATE TABLE IF NOT EXISTS defense (
+);
+CREATE TABLE IF NOT EXISTS defense(
     uid int
 ,   gid int
 ,   player varchar(7)
@@ -260,10 +219,8 @@ CREATE TABLE IF NOT EXISTS defense (
 ,   jnum int
 ,   dcp int
 ,   primary key (uid)
-,   foreign key (gid) 
-) ENGINE=MyISAM DEFAULT CHARSET=latin1
-
-CREATE TABLE IF NOT EXISTS offense (
+);
+CREATE TABLE IF NOT EXISTS offense(
     uid int
 ,   gid int
 ,   player varchar(7)
@@ -298,10 +255,8 @@ CREATE TABLE IF NOT EXISTS offense (
 ,   jnum int
 ,   dcp int
 ,   primary key (uid)
-,   foreign key (gid)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1
-
-CREATE TABLE IF NOT EXISTS drive (
+);
+CREATE TABLE IF NOT EXISTS drive(
     uid int
 ,   gid int
 ,   fpid int
@@ -327,11 +282,8 @@ CREATE TABLE IF NOT EXISTS drive (
 ,   net int
 ,   res varchar(4)
 ,   primary key (uid)
-,   foreign key (gid)
-,   foreign key (fpid) 
-) ENGINE=MyISAM DEFAULT CHARSET=latin1
-
-CREATE TABLE IF NOT EXISTS player (
+);
+CREATE TABLE IF NOT EXISTS player(
     player varchar(7)
 ,   fname varchar(32)
 ,   lname varchar(32)
@@ -358,9 +310,8 @@ CREATE TABLE IF NOT EXISTS player (
 ,   jnum int
 ,   dcp int
 ,   primary key (player) 
-) ENGINE=MyISAM DEFAULT CHARSET=latin1
-
-CREATE TABLE IF NOT EXISTS game (
+);
+CREATE TABLE IF NOT EXISTS game(
     gid int
 ,   seas int
 ,   wk int
@@ -379,20 +330,17 @@ CREATE TABLE IF NOT EXISTS game (
 ,   ptsv int
 ,   ptsh int
 ,   primary key (gid)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1
-
-CREATE TABLE IF NOT EXISTS chart (
+);
+CREATE TABLE IF NOT EXISTS chart(
     pid int
 ,   rb int
 ,   te int
 ,   drp int
 ,   mbt int
 ,   yac int
-,   primary key (pid)
- 
-) ENGINE=MyISAM DEFAULT CHARSET=latin1
-
-CREATE TABLE IF NOT EXISTS team (
+,   primary key (pid) 
+);
+CREATE TABLE IF NOT EXISTS team(
     tid int
 ,   gid int
 ,   tname varchar(3)
@@ -537,7 +485,8 @@ CREATE TABLE IF NOT EXISTS team (
 ,   pfn int
 ,   snpo int
 ,   snpd int
-,   primary key (tid)
-,   primary key (gid) 
-) ENGINE=MyISAM DEFAULT CHARSET=latin1
-eof
+,   primary key (tid,gid)
+);
+EOF
+done
+exit
