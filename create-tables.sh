@@ -17,6 +17,7 @@ CREATE TABLE IF NOT EXISTS block(
     pid int
 ,   blk varchar(7)
 ,   brcv varchar(7)
+,   type varchar(4)
 ,   primary key (pid) 
 );
 CREATE TABLE IF NOT EXISTS conv (
@@ -55,6 +56,7 @@ CREATE TABLE IF NOT EXISTS defense(
 ,   posd varchar(4)
 ,   jnum int
 ,   dcp int
+,   nflid int
 ,   primary key (uid)
 );
 CREATE TABLE IF NOT EXISTS drive(
@@ -195,6 +197,7 @@ CREATE TABLE IF NOT EXISTS offense(
 ,   posd varchar(4)
 ,   jnum int
 ,   dcp int
+,   nflid int
 ,   primary key (uid)
 );
 CREATE TABLE IF NOT EXISTS pass(
@@ -299,7 +302,7 @@ CREATE TABLE IF NOT EXISTS penalty(
 ,   pid int
 ,   ptm varchar(3)
 ,   pen varchar(7)
-,   descr varchar(40)
+,   desc varchar(40)
 ,   cat int
 ,   pey int
 ,   act varchar(1)
@@ -328,6 +331,13 @@ CREATE TABLE IF NOT EXISTS play (
 ,   sg bool
 ,   nh bool
 ,   pts int
+,   tck bool
+,   sk bool
+,   pen bool
+,   ints bool
+,   fum bool
+,   saf bool
+,   blk bool
 ,   primary key (pid)
 ,   foreign key (gid) REFERENCES parent(pid)  
  );
@@ -340,7 +350,7 @@ CREATE TABLE IF NOT EXISTS play (
 ,   pos2 varchar(4)
 ,   height int
 ,   weight int
-,   yob int
+,   dob date
 ,   forty double
 ,   bench int
 ,   vertical double
@@ -357,6 +367,7 @@ CREATE TABLE IF NOT EXISTS play (
 ,   posd varchar(4)
 ,   jnum int
 ,   dcp int
+,   nflid int
 ,   primary key (player) 
 );
 CREATE TABLE IF NOT EXISTS punt(
@@ -428,7 +439,8 @@ CREATE TABLE IF NOT EXISTS snap(
 ,   gid int
 ,   tname varchar(3)
 ,   player varchar(7)
-,   pos varchar(4)
+,   posd varchar(4)
+,   poss varchar(4)
 ,   snp int
 ,   primary key (uid)
 );
@@ -596,6 +608,101 @@ CREATE TABLE IF NOT EXISTS team(
 ,   pfn int
 ,   snpo int
 ,   snpd int
+,   saf int
+,   blk int
+,   fp int
+,   box double(20,2)
+,   avt double(20,2)
+,   pru double(20,2)
+,   box4 int
+,   box4sp int
+,   box4y int
+,   box5 int
+,   box5sp int
+,   box5y int
+,   box6 int
+,   box6sp int
+,   box6y int
+,   box7 int
+,   box7sp int
+,   box7y int
+,   box8 int
+,   box8sp int
+,   box8y int
+,   avt1 int
+,   avt1sp int
+,   avt1y int
+,   avt2 int
+,   avt2sp int
+,   avt2y int
+,   avt3 int
+,   avt3sp int
+,   avt3y int
+,   avt4 int
+,   avt4sp int
+,   avt4y int
+,   avt5 int
+,   avt5sp int
+,   avt5y int
+,   pru3 int
+,   pru3sp int
+,   pru3y int
+,   pru4 int
+,   pru4sp int
+,   pru4y int
+,   pru5 int
+,   pru5sp int
+,   pru5y int
+,   scrm int
+,   scrmsp int
+,   scrmy int
+,   nblz int
+,   nblzsp int
+,   nblzy int
+,   blz1 int
+,   blz1sp int
+,   blz1y int
+,   blz2 int
+,   blz2sp int
+,   blz2y int
+,   pap int
+,   papsp int
+,   papy int
+,   scr int
+,   scrsp int
+,   scry int
+,   npr int
+,   nprsp int
+,   npry int
+,   qbp int
+,   qbpsp int
+,   qbpy int
+,   qbhi int
+,   qbhisp int
+,   qbhiy int
+,   qbhu int
+,   qbhusp int
+,   qbhuy int
+,   ytg1 int
+,   ytg2 int
+,   ytg3 int
+,   tay1 int
+,   tay2 int
+,   tay3 int
+,   dot1 int
+,   dot2 int
+,   dot3 int
+,   yac1 int
+,   yac2 int
+,   yac3 int
+,   crr int
+,   cnb int
+,   cnbc int
+,   drp int
+,   qbta int
+,   bap int
+,   intw int
+,   inti int
 ,   primary key (tid,gid)
 );
 EOF
