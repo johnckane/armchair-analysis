@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # show commands being executed, per debug
 set -x 
 
@@ -7,7 +9,7 @@ _db='armchair_analysis'
 _db_user='root'
 
 # define directory containing csv files
-_csv_directory='/home/john/armchair-analysis/nfl_00-18'
+_csv_directory='/home/john/projects/armchair-analysis/nfl_00-18'
 
 # go into directory
 cd $_csv_directory
@@ -302,13 +304,13 @@ CREATE TABLE IF NOT EXISTS penalty(
 ,   pid int
 ,   ptm varchar(3)
 ,   pen varchar(7)
-,   desc varchar(40)
+,   descr varchar(40)
 ,   cat int
 ,   pey int
 ,   act varchar(1)
 ,   primary key (uid)
 );
-CREATE TABLE IF NOT EXISTS play (      
+CREATE TABLE IF NOT EXISTS play(      
     gid int 
 ,   pid int
 ,   off varchar(3)
@@ -339,7 +341,6 @@ CREATE TABLE IF NOT EXISTS play (
 ,   saf bool
 ,   blk bool
 ,   primary key (pid)
-,   foreign key (gid) REFERENCES parent(pid)  
  );
  CREATE TABLE IF NOT EXISTS player(
     player varchar(7)
@@ -706,5 +707,4 @@ CREATE TABLE IF NOT EXISTS team(
 ,   primary key (tid,gid)
 );
 EOF
-done
 exit
