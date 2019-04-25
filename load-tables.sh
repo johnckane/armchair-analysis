@@ -17,12 +17,11 @@ _db_user="root"
 # define directory containing csv files
 _csv_directory="/home/john/projects/armchair-analysis/nfl_00-18"
 
-# rename all files to lowercase
-find $_csv_directory -depth -exec rename 's/(.*)\/([^\/]*)/$1\/\L$2/' {} \;
-
-
 # go into directory
 cd $_csv_directory
+
+# rename files to lowercase
+for i in $( ls | grep [A-Z] ); do mv -i $i `echo $i | tr 'A-Z' 'a-z'`; done
 
 # get a list of CSV files in directory
 _csv_files=`ls *.csv`
@@ -42,17 +41,14 @@ do
     
     
     #If you need to delete all rows from all tables...
-    #mysql -u$_db_user $_db <<EOF
-    #delete from $_csv_file_extensionless;
-    #quit;
-    #EOF
-     
+    
     mysql -u$_db_user $_db <<EOF
+    delete from $_csv_file_extensionless;
+
     LOAD DATA LOCAL INFILE '$_csv_file' 
     INTO TABLE $_csv_file_extensionless 
     FIELDS TERMINATED BY ','
     IGNORE 1 LINES ;
-    quit;
 EOF
 
 done
