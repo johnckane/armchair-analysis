@@ -3,7 +3,7 @@
 set -x
 
 _db="armchair_analysis"
-_db_user="root"
+_db_user="john"
 
 _csv_directory="/home/john/projects/armchair-analysis/nfl_00-18/more-formatting-needed"
 cd $_csv_directory

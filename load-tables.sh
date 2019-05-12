@@ -12,7 +12,7 @@ set -x
 # define database connectivity
 
 _db="armchair_analysis"
-_db_user="root"
+_db_user="john"
 
 # define directory containing csv files
 _csv_directory="/home/john/projects/armchair-analysis/nfl_00-18"
