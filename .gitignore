@@ -1,7 +1,10 @@
 *.pdf
 *.csv
-*nfl_00-16
-*nfl_00-17
+nfl_00-16/
+nfl_00-17/
 nfl_00-17.zip
-nfl_00-18.zip
 nfl_00-18/
+nfl_00-18.zip
+nfl_00-19/
+nfl_00-19.zip
+mysql-sign-in.txt
