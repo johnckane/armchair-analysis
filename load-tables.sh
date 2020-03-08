@@ -15,7 +15,7 @@ _db="armchair_analysis"
 _db_user="john"
 
 # define directory containing csv files
-_csv_directory="/home/john/projects/armchair-analysis/nfl_00-18"
+_csv_directory="/home/john/projects/armchair-analysis/nfl_00-19"
 
 # go into directory
 cd $_csv_directory
