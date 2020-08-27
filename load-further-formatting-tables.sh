@@ -5,7 +5,7 @@ set -x
 _db="armchair_analysis"
 _db_user="john"
 
-_csv_directory="/home/john/projects/armchair-analysis/nfl_00-18/more-formatting-needed"
+_csv_directory="/home/john/projects/armchair-analysis/nfl_00-19/more-formatting-needed"
 cd $_csv_directory
 
 mysql -u$_db_user $_db <<EOF
